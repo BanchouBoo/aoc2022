@@ -28,9 +28,9 @@ const Option = enum(usize) {
 
     pub fn fromChar(char: u8) !Option {
         return switch (char) {
-            'A' => .rock,
-            'B' => .paper,
-            'C' => .scissors,
+            'A', 'X' => .rock,
+            'B', 'Y' => .paper,
+            'C', 'Z' => .scissors,
             else => error.UnexpectedInput,
         };
     }
@@ -55,14 +55,25 @@ const Option = enum(usize) {
 
 pub fn main() !void {
     var matches = std.mem.split(u8, data, "\n");
-    var score: usize = 0;
+    var p1_score: usize = 0;
+    var p2_score: usize = 0;
     while (matches.next()) |match| {
         if (match.len > 0) {
             const opponent = try Option.fromChar(match[0]);
-            const result = try Result.fromChar(match[2]);
-            const me = Option.fromResult(result, opponent);
-            score += me.score() + me.match(opponent);
+            // part 1
+            {
+                const me = try Option.fromChar(match[2]);
+                p1_score += me.score() + me.match(opponent);
+            }
+
+            // part 2
+            {
+                const result = try Result.fromChar(match[2]);
+                const me = Option.fromResult(result, opponent);
+                p2_score += me.score() + me.match(opponent);
+            }
         }
     }
-    std.debug.print("Final score is {d}\n", .{score});
+    std.debug.print("Final score for part 1 is {d}\n", .{p1_score});
+    std.debug.print("Final score for part 2 is {d}\n", .{p2_score});
 }
