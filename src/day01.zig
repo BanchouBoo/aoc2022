@@ -37,5 +37,7 @@ pub fn main() !void {
     for (output[0..3]) |item| {
         sum += item[1];
     }
-    std.log.info("Sum of top three elves' calories: {d}\n", .{sum});
+
+    std.log.info("Sum of top elf's calories: {d}", .{output[0][1]});
+    std.log.info("Sum of top three elves' calories: {d}", .{sum});
 }
