@@ -10,11 +10,10 @@ fn getElfCalorieCounts(allocator: Allocator, input: []const u8) ![][2]usize {
     var elf_inventories = std.mem.split(u8, input, "\n\n");
     var i: usize = 0;
     while (elf_inventories.next()) |inventory| {
-        var items = std.mem.split(u8, inventory, "\n");
+        var items = std.mem.tokenize(u8, inventory, "\n");
         var calories: usize = 0;
         while (items.next()) |item| {
-            if (item.len > 0)
-                calories += std.fmt.parseInt(usize, item, 10) catch return error.InvalidInput;
+            calories += std.fmt.parseInt(usize, item, 10) catch return error.InvalidInput;
         }
         try elf_calorie_list.append(allocator, .{ i, calories });
         i += 1;

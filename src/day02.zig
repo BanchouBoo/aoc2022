@@ -54,24 +54,22 @@ const Option = enum(usize) {
 };
 
 pub fn main() !void {
-    var matches = std.mem.split(u8, data, "\n");
+    var matches = std.mem.tokenize(u8, data, "\n");
     var p1_score: usize = 0;
     var p2_score: usize = 0;
     while (matches.next()) |match| {
-        if (match.len > 0) {
-            const opponent = try Option.fromChar(match[0]);
-            // part 1
-            {
-                const me = try Option.fromChar(match[2]);
-                p1_score += me.score() + me.match(opponent);
-            }
+        const opponent = try Option.fromChar(match[0]);
+        // part 1
+        {
+            const me = try Option.fromChar(match[2]);
+            p1_score += me.score() + me.match(opponent);
+        }
 
-            // part 2
-            {
-                const result = try Result.fromChar(match[2]);
-                const me = Option.fromResult(result, opponent);
-                p2_score += me.score() + me.match(opponent);
-            }
+        // part 2
+        {
+            const result = try Result.fromChar(match[2]);
+            const me = Option.fromResult(result, opponent);
+            p2_score += me.score() + me.match(opponent);
         }
     }
     std.debug.print("Final score for part 1 is {d}\n", .{p1_score});
