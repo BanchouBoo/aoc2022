@@ -17,11 +17,11 @@ pub fn main() !void {
         const p2_max = std.fmt.parseInt(u8, pair_split.next().?, 10) catch unreachable;
 
         const one = @as(u256, 1);
-        const p1_mask: MaskType = @truncate(
+        const p1_mask = @truncate(
             MaskType,
             ((one << (p1_min - 1)) - 1) ^ ((one << (p1_max)) - 1),
         );
-        const p2_mask: MaskType = @truncate(
+        const p2_mask = @truncate(
             MaskType,
             ((one << (p2_min - 1)) - 1) ^ ((one << (p2_max)) - 1),
         );
