@@ -72,6 +72,6 @@ pub fn main() !void {
             p2_score += me.score() + me.match(opponent);
         }
     }
-    std.log.info("Final score for part 1 is {d}", .{p1_score});
-    std.log.info("Final score for part 2 is {d}", .{p2_score});
+    std.debug.print("Final score for part 1 is {d}\n", .{p1_score});
+    std.debug.print("Final score for part 2 is {d}\n", .{p2_score});
 }

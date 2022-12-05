@@ -78,6 +78,12 @@ pub fn main() !void {
         }
     }
 
-    std.log.info("The sum of each compartment's duplicate item's priority is {d}", .{p1_sum});
-    std.log.info("The sum of each team's duplicate item's priority is {d}", .{p2_sum});
+    std.debug.print(
+        "The sum of each compartment's duplicate item's priority is {d}\n",
+        .{p1_sum},
+    );
+    std.debug.print(
+        "The sum of each team's duplicate item's priority is {d}\n",
+        .{p2_sum},
+    );
 }

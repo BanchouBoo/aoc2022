@@ -31,6 +31,12 @@ pub fn main() !void {
         overlapping_pairs += @boolToInt(p1_mask & p2_mask > 0);
     }
 
-    std.log.info("The amount of pairs where one range fully contains another is {d}", .{containing_pairs});
-    std.log.info("The amount of pairs where any overlap occurs is {d}", .{overlapping_pairs});
+    std.debug.print(
+        "The amount of pairs where one range fully contains another is {d}\n",
+        .{containing_pairs},
+    );
+    std.debug.print(
+        "The amount of pairs where any overlap occurs is {d}\n",
+        .{overlapping_pairs},
+    );
 }

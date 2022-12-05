@@ -38,6 +38,6 @@ pub fn main() !void {
         sum += item[1];
     }
 
-    std.log.info("Sum of top elf's calories: {d}", .{output[0][1]});
-    std.log.info("Sum of top three elves' calories: {d}", .{sum});
+    std.debug.print("Sum of top elf's calories: {d}\n", .{output[0][1]});
+    std.debug.print("Sum of top three elves' calories: {d}\n", .{sum});
 }
