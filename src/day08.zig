@@ -164,22 +164,6 @@ pub fn main() !void {
         }
     }
 
-    // draw map
-    // {
-    //     var y: u8 = 0;
-    //     while (y < height) : (y += 1) {
-    //         var x: u8 = 0;
-    //         std.debug.print("{d:>2}: ", .{y + 1});
-    //         while (x < width) : (x += 1) {
-    //             if (tree_visibility[index(x, y)])
-    //                 std.debug.print("\x1b[0;31m{c}\x1b[0m", .{data[index(x, y) + y]})
-    //             else
-    //                 std.debug.print("{c}", .{data[index(x, y) + y]});
-    //         }
-    //         std.debug.print("\n", .{});
-    //     }
-    // }
-
     std.debug.print("The amount of trees visible from the outside is {d}\n", .{visible_tree_count});
     std.debug.print("The highest scenic score is {d}\n", .{max_scenic_score});
 }
