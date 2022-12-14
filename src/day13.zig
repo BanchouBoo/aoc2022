@@ -136,7 +136,7 @@ pub fn main() !void {
     packet_list.sort();
     const decoder_key = packet_list.getDecoderKey();
 
-    std.debug.print("The sum of the indices correctly ordered pairs is {d}\n", .{sum});
+    std.debug.print("The sum of the indices of correctly ordered pairs is {d}\n", .{sum});
 
     std.debug.print("The decoder key is {d}\n", .{decoder_key});
 }
