@@ -3,10 +3,11 @@ const std = @import("std");
 const data = @embedFile("data/day13.txt");
 
 const CompareResult = enum { lt, eq, gt };
+const ItemList = std.ArrayListUnmanaged(Item);
 
 const Item = union(enum) {
     integer: i8,
-    list: std.ArrayListUnmanaged(Item),
+    list: ItemList,
 
     pub fn compare(a: Item, b: Item) CompareResult {
         if (a == .integer and b == .integer) {
@@ -60,7 +61,7 @@ const Item = union(enum) {
 };
 
 fn parseLine(allocator: std.mem.Allocator, line: []const u8) !Item {
-    var result = std.ArrayListUnmanaged(Item){};
+    var result = ItemList{};
     var list_depth: usize = 0;
     var line_index: usize = 1;
     while (line_index < line.len - 1) {
